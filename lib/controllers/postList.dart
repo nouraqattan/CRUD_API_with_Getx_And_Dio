@@ -16,7 +16,7 @@ class PostController extends GetxController {
     fetchPosts();
   }
 
-  // Fetch all posts
+
   Future<void> fetchPosts() async {
     isLoading(true);
     try {
