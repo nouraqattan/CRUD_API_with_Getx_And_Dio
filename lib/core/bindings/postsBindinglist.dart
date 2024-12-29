@@ -1,9 +1,8 @@
-/*import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import '../../../controllers/postControllers.dart';
-import '../../../core/api/dioConsumer.dart';
-import '../../../core/api/repositry.dart';
-
+import '../../controllers/postList.dart';
+import '../api/dioConsumer.dart';
+import '../api/repositry.dart';
 class PostBinding extends Bindings {
   @override
   void dependencies() {
@@ -13,4 +12,3 @@ class PostBinding extends Bindings {
     Get.lazyPut<PostController>(() => PostController(postRepository: Get.find<PostRepository>()));
   }
 }
-*/

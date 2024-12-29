@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
-
 import 'errorModel.dart';
 import 'handleServerException.dart';
-
 void handleDioExceptions(DioError e) {
   if (e.response != null) {
     final errorData = e.response!.data;

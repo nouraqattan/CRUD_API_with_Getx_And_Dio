@@ -1,4 +1,4 @@
-/*import 'package:get/get.dart';
+import 'package:get/get.dart';
 import '../../model/postModel.dart';
 import '../core/api/repositry.dart';
 
@@ -6,6 +6,7 @@ class PostController extends GetxController {
   final PostRepository postRepository;
   var posts = <Post>[].obs;
   var isLoading = false.obs;
+
 
   PostController({required this.postRepository});
 
@@ -15,6 +16,7 @@ class PostController extends GetxController {
     fetchPosts();
   }
 
+  // Fetch all posts
   Future<void> fetchPosts() async {
     isLoading(true);
     try {
@@ -28,39 +30,14 @@ class PostController extends GetxController {
     }
   }
 
-  Future<void> createPost(Post post) async {
-    isLoading(true);
-    try {
-      final response = await postRepository.createPost(post);
-      posts.add(response);
-      Get.snackbar("Success", "Post created successfully");
-    } catch (e) {
-      Get.snackbar("Error", "An error occurred while creating the post.");
-    } finally {
-      isLoading(false);
-    }
-  }
-
-  Future<void> editPost(Post updatedPost) async {
-    try {
-      final response = await postRepository.updatePost(updatedPost);
-      int index = posts.indexWhere((p) => p.id == updatedPost.id);
-      if (index != -1) {
-        posts[index] = response;
-      }
-      Get.snackbar("Success", "Post updated successfully");
-    } catch (e) {
-      Get.snackbar("Error", "An error occurred while updating the post.");
-    }
-  }
 
   Future<void> deletePost(int id) async {
     try {
-      await postRepository.deletePost(id);  // Use repository to delete post
+      await postRepository.deletePost(id);
       posts.removeWhere((post) => post.id == id);
       Get.snackbar("Success", "Post deleted successfully");
     } catch (e) {
       Get.snackbar("Error", "An error occurred while deleting the post.");
     }
   }
-}*/
+}

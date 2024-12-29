@@ -1,15 +1,13 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/postControllers.dart';
-import '../core/api/dioConsumer.dart';
-import '../core/routes/routes.dart';
+import '../controllers/postList.dart';
+import '../core/routes/approutes.dart';
 
 class PostsScreen extends StatelessWidget {
-  final PostController postController = Get.put(PostController(apiConsumer: DioConsumer(dio: Dio())));
+  final PostController postController = Get.find<PostController>();
+
   @override
   Widget build(BuildContext context) {
-    postController.fetchPosts();
     return Scaffold(
       appBar: AppBar(
         title: Text('Posts'),
@@ -17,7 +15,7 @@ class PostsScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Get.toNamed(AppRoutes.addPost);
+              Get.toNamed(AppRoutes.addEditPost);
             },
           ),
         ],
@@ -33,35 +31,30 @@ class PostsScreen extends StatelessWidget {
             return ListTile(
               title: Text(post.title),
               subtitle: Text(post.body),
+              onTap: () {
+                Get.toNamed(AppRoutes.postDetail, arguments: post);
+              },
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
                     icon: Icon(Icons.edit),
                     onPressed: () {
-                      Get.toNamed(AppRoutes.editPost, arguments: post);
+                      Get.toNamed(AppRoutes.addEditPost, arguments: post);
                     },
                   ),
                   IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {
-                      final PostController controller = Get.find();
-                      controller.deletePost(post.id);
+                      postController.deletePost(post.id);
                     },
                   ),
                 ],
               ),
-              onTap: () {
-                Get.toNamed(AppRoutes.postDetail, arguments: {
-                  'userId': post.userId,
-                  'id': post.id,
-                  'title': post.title,
-                  'body': post.body,
-                });
-              },
             );
           },
         );
       }),
     );
-  }}
+  }
+}
