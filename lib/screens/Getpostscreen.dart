@@ -14,8 +14,11 @@ class PostsScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () {
-              Get.toNamed(AppRoutes.addEditPost);
+            onPressed: () async {
+              final result = await Get.toNamed(AppRoutes.addEditPost);
+              if (result == true) {
+                await postController.fetchPosts();
+              }
             },
           ),
         ],
@@ -24,6 +27,11 @@ class PostsScreen extends StatelessWidget {
         if (postController.isLoading.isTrue) {
           return Center(child: CircularProgressIndicator());
         }
+
+        if (postController.posts.isEmpty) {
+          return Center(child: Text("No posts available"));
+        }
+
         return ListView.builder(
           itemCount: postController.posts.length,
           itemBuilder: (context, index) {
@@ -39,8 +47,11 @@ class PostsScreen extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: Icon(Icons.edit),
-                    onPressed: () {
-                      Get.toNamed(AppRoutes.addEditPost, arguments: post);
+                    onPressed: () async {
+                      final result = await Get.toNamed(AppRoutes.addEditPost, arguments: post);
+                      if (result == true) {
+                        await postController.fetchPosts();
+                      }
                     },
                   ),
                   IconButton(

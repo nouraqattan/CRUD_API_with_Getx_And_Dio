@@ -7,7 +7,6 @@ class PostController extends GetxController {
   var posts = <Post>[].obs;
   var isLoading = false.obs;
 
-
   PostController({required this.postRepository});
 
   @override
@@ -16,20 +15,17 @@ class PostController extends GetxController {
     fetchPosts();
   }
 
-
   Future<void> fetchPosts() async {
     isLoading(true);
     try {
       final response = await postRepository.fetchPosts();
-      posts.value = response;
+      posts.assignAll(response);
     } catch (e) {
       print("Error fetching posts: $e");
-      Get.snackbar('Error', 'Failed to load posts', snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading(false);
     }
   }
-
 
   Future<void> deletePost(int id) async {
     try {

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import '../errors/handleDioException.dart';
 import 'endpoint_API_Repo.dart';
-
 class DioConsumer extends ApiRepository {
   final Dio dio;
 
@@ -10,6 +9,7 @@ class DioConsumer extends ApiRepository {
     dio.options.connectTimeout = const Duration(seconds: 10);
     dio.options.receiveTimeout = const Duration(seconds: 10);
   }
+
   Future<dynamic> get(String path, {Map<String, dynamic>? queryParameters}) async {
     try {
       final response = await dio.get(path, queryParameters: queryParameters);
@@ -19,6 +19,7 @@ class DioConsumer extends ApiRepository {
       rethrow;
     }
   }
+
   Future<dynamic> post(String path, {dynamic data}) async {
     try {
       final response = await dio.post(path, data: data);
@@ -41,8 +42,7 @@ class DioConsumer extends ApiRepository {
 
   Future<dynamic> delete(String path) async {
     try {
-      final response = await dio.delete(path);
-      return response.data;
+      await dio.delete(path);
     } on DioError catch (e) {
       handleDioExceptions(e);
       rethrow;

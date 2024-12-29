@@ -7,6 +7,7 @@ import 'core/routes/approutes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper().init();
+
   runApp(MyApp());
 }
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'FakeAPI using Getx&DIO',
+      initialBinding: AppBindings(),
       initialRoute: AppRoutes.posts,
       getPages: AppBindings.routes,
     );

@@ -1,14 +1,20 @@
 import 'package:dio/dio.dart';
 import 'package:fakeapi_withdio_getx/controllers/postedit.dart';
 import 'package:get/get.dart';
+import '../../controllers/postList.dart';
 import '../api/dioConsumer.dart';
 import '../api/repositry.dart';
 
 class AddEditPostBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<DioConsumer>(DioConsumer(dio: Get.find<Dio>()));
-    Get.put<PostRepository>(PostRepository(apiConsumer: Get.find<DioConsumer>()));
-    Get.put<PostEditController>(PostEditController(postRepository: Get.find<PostRepository>()));
+    Get.lazyPut<Dio>(() => Dio());
+    Get.lazyPut<DioConsumer>(() => DioConsumer(dio: Get.find<Dio>()));
+    Get.lazyPut<PostRepository>(() => PostRepository(apiConsumer: Get.find<DioConsumer>()));
+    Get.lazyPut<PostController>(() => PostController(postRepository: Get.find<PostRepository>()));
+    Get.lazyPut<PostEditController>(() => PostEditController(
+      postRepository: Get.find<PostRepository>(),
+      postController: Get.find<PostController>(),
+    ));
   }
 }

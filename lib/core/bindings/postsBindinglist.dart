@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../controllers/postList.dart';
 import '../api/dioConsumer.dart';
 import '../api/repositry.dart';
+
 class PostBinding extends Bindings {
   @override
   void dependencies() {
