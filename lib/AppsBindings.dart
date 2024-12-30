@@ -5,7 +5,6 @@ import 'domain/postsList_Page/postList_Controller.dart';
 import 'core/api/dioConsumer.dart';
 import 'core/api/repositry.dart';
 
-
 class AppsBindingsRepo extends Bindings {
   @override
   void dependencies() {

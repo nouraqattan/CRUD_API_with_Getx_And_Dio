@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import '../approutes.dart';
+import '../naivigation_manager/approutes.dart';
 import '../domain/postsList_Page/postList_Controller.dart';
 
 class PostsScreen extends StatelessWidget {

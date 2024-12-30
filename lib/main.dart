@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'routes.dart';
+import 'naivigation_manager/routes.dart';
 import 'core/cachhelper/cash_helper.dart';
-import 'approutes.dart';
+import 'naivigation_manager/approutes.dart';
 import 'domain/initialbinding/initial_binding.dart';
 
 void main() async {
