@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
-import '../../domain/post_edit_Add_Page/addeditBindingPage.dart';
-import '../../domain/postsList_Page/postsBindinglist.dart';
-import '../../screens/GetDetailScreenModel.dart';
-import '../../screens/Getpostscreen.dart';
-import '../../screens/addEditPostScreen.dart';
-import '../../approutes.dart';
-import 'BindingsRepositries.dart';
+import 'domain/post_edit_Add_Page/addeditBindingPage.dart';
+import 'domain/postsList_Page/postsBindinglist.dart';
+import 'screens/GetDetailScreenModel.dart';
+import 'screens/Getpostscreen.dart';
+import 'screens/addEditPostScreen.dart';
+import 'approutes.dart';
 
 class AppBindings extends Bindings {
   @override
@@ -17,17 +16,17 @@ class AppBindings extends Bindings {
     GetPage(
       name: AppRoutes.posts,
       page: () => PostsScreen(),
-      binding: AppsBindingsRepo(),
+      binding: PostBinding(),
     ),
     GetPage(
       name: AppRoutes.addEditPost,
       page: () => AddOrEditPostScreen(),
-      binding: AppsBindingsRepo(),
+      binding: AddEditPostBinding(),
     ),
     GetPage(
       name: AppRoutes.postDetail,
       page: () => PostDetailScreen(),
-      binding: AppsBindingsRepo(),
+      binding: PostBinding(),
     ),
   ];
 }
