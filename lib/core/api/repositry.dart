@@ -1,3 +1,6 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
 import 'endpoint_API_Repo.dart';
 import '../../model/postModel.dart';
 import 'dioConsumer.dart';
@@ -5,7 +8,7 @@ import 'dioConsumer.dart';
 class PostRepository {
   final DioConsumer apiConsumer;
 
-  PostRepository({required this.apiConsumer});
+  PostRepository() : apiConsumer = Get.find<DioConsumer>();
 
   Future<List<Post>> fetchPosts() async {
     final response = await apiConsumer.get(EndPoint.posts);

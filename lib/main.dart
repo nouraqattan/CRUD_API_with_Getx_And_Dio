@@ -1,8 +1,8 @@
-import 'package:fakeapi_withdio_getx/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'core/AppsBinding/appbinding.dart';
 import 'core/cachhelper/cash_helper.dart';
-import 'core/routes/approutes.dart';
+import 'approutes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
       title: 'FakeAPI using Getx&DIO',
       initialBinding: AppBindings(),
       initialRoute: AppRoutes.posts,
-      getPages: AppBindings.routes,
+      getPages: AppBindings.AppBinding,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../errors/handleDioException.dart';
 import 'endpoint_API_Repo.dart';
-class DioConsumer extends ApiRepository {
+class DioConsumer {
   final Dio dio;
 
-  DioConsumer({required this.dio}) {
+  DioConsumer() : dio = Get.find<Dio>() {
     dio.options.baseUrl = ApiRepository.baseUrl;
     dio.options.connectTimeout = const Duration(seconds: 10);
     dio.options.receiveTimeout = const Duration(seconds: 10);

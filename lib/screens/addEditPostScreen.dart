@@ -1,9 +1,8 @@
-import 'package:fakeapi_withdio_getx/controllers/postedit.dart';
+import 'package:fakeapi_withdio_getx/doamin/post_edit_Add_Page/postedit_Controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/postList.dart';
+import '../doamin/postsList_Page/postList_Controller.dart';
 import '../model/postModel.dart';
-
 
 class AddOrEditPostScreen extends StatelessWidget {
   final PostEditController postEditController = Get.find<PostEditController>();
@@ -22,7 +21,7 @@ class AddOrEditPostScreen extends StatelessWidget {
         title: Text(post == null ? 'Add Post' : 'Edit Post'),
         actions: [
           IconButton(
-            icon: Icon(Icons.save),
+              icon: Icon(Icons.save),
               onPressed: () async {
                 final title = titleController.text.trim();
                 final body = bodyController.text.trim();
@@ -55,21 +54,59 @@ class AddOrEditPostScreen extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         }
 
-        return Padding(
+        return Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue.shade100, Colors.grey],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              TextField(
-                controller: titleController,
-                decoration: InputDecoration(labelText: "Title"),
-              ),
-              SizedBox(height: 16),
-              TextField(
-                controller: bodyController,
-                decoration: InputDecoration(labelText: "Body"),
-                maxLines: 5,
-              ),
-            ],
+          child: SingleChildScrollView( // Added SingleChildScrollView
+            child: Column(
+              children: [
+                SizedBox(height: 15),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: TextField(
+                    controller: titleController,
+                    decoration: InputDecoration(
+                      labelText: "Title",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('  Body',style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                  ],
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: TextField(
+                    controller: bodyController,
+                    decoration: InputDecoration(
+                     // labelText: "Body",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    maxLines: 25,
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       }),

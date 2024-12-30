@@ -2,32 +2,32 @@ import 'package:get/get.dart';
 import '../../screens/GetDetailScreenModel.dart';
 import '../../screens/Getpostscreen.dart';
 import '../../screens/addEditPostScreen.dart';
-import '../bindings/addeditBindingPAge.dart';
-import '../bindings/postsBindinglist.dart';
-import 'approutes.dart';
+import '../../doamin/post_edit_Add_Page/addeditBindingPage.dart';
+import '../../doamin/postsList_Page/postsBindinglist.dart';
+import '../../approutes.dart';
+import 'BindingsRepositries.dart';
 
 class AppBindings extends Bindings {
   @override
   void dependencies() {
-
     PostBinding().dependencies();
     AddEditPostBinding().dependencies();
   }
-  static final routes = [
+  static final AppBinding = [
     GetPage(
       name: AppRoutes.posts,
       page: () => PostsScreen(),
-      binding: PostBinding(),
+      binding: AppsBindingsRepo(),
     ),
     GetPage(
       name: AppRoutes.addEditPost,
       page: () => AddOrEditPostScreen(),
-      binding: AddEditPostBinding(),
+      binding: AppsBindingsRepo(),
     ),
     GetPage(
       name: AppRoutes.postDetail,
       page: () => PostDetailScreen(),
-      binding: PostBinding(),
+      binding: AppsBindingsRepo(),
     ),
   ];
 }

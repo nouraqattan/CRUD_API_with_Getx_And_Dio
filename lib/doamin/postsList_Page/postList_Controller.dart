@@ -1,17 +1,16 @@
 import 'package:get/get.dart';
-import '../../model/postModel.dart';
-import '../core/api/repositry.dart';
+import '../../../model/postModel.dart';
+import '../../core/api/repositry.dart';
 
 class PostController extends GetxController {
-  final PostRepository postRepository;
   var posts = <Post>[].obs;
   var isLoading = false.obs;
-
-  PostController({required this.postRepository});
+  late PostRepository postRepository;
 
   @override
   void onInit() {
     super.onInit();
+    postRepository = Get.find<PostRepository>();
     fetchPosts();
   }
 

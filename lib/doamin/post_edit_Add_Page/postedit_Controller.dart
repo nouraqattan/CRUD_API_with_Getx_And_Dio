@@ -1,14 +1,20 @@
-import 'package:fakeapi_withdio_getx/controllers/postList.dart';
+import 'package:fakeapi_withdio_getx/doamin/postsList_Page/postList_Controller.dart';
 import 'package:get/get.dart';
-import '../../../core/api/repositry.dart';
-import '../../../model/postModel.dart';
+import '../../../../core/api/repositry.dart';
+import '../../../../model/postModel.dart';
 
 class PostEditController extends GetxController {
-  final PostRepository postRepository;
-  final PostController postController;
   var isLoading = false.obs;
+  late final PostRepository postRepository;
+  late final PostController postController;
 
-  PostEditController({required this.postRepository, required this.postController});
+  @override
+  void onInit() {
+    super.onInit();
+
+    postRepository = Get.find<PostRepository>();
+    postController = Get.find<PostController>();
+  }
 
   Future<void> createPost(Post post) async {
     isLoading(true);
