@@ -1,7 +1,7 @@
-import 'package:fakeapi_withdio_getx/doamin/post_edit_Add_Page/postedit_Controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../doamin/postsList_Page/postList_Controller.dart';
+import '../domain/post_edit_Add_Page/postedit_Controller.dart';
+import '../domain/postsList_Page/postList_Controller.dart';
 import '../model/postModel.dart';
 
 class AddOrEditPostScreen extends StatelessWidget {
@@ -63,7 +63,7 @@ class AddOrEditPostScreen extends StatelessWidget {
             ),
           ),
           padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView( // Added SingleChildScrollView
+          child: SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(height: 15),

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import '../doamin/postsList_Page/postList_Controller.dart';
 import '../approutes.dart';
+import '../domain/postsList_Page/postList_Controller.dart';
 
 class PostsScreen extends StatelessWidget {
   final PostController postController = Get.find<PostController>();
@@ -15,18 +15,18 @@ class PostsScreen extends StatelessWidget {
         title: Row(
           children: [
             Container(
-              width: 40.0, // Set the width of the circular image
-              height: 40.0, // Set the height of the circular image
+              width: 40.0,
+              height: 40.0,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage('assets/logo.png'), // Replace with your image path
+                  image: AssetImage('assets/logo.png'),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            SizedBox(width: 8.0), // Space between the image and text
-            Text('Get Your Posts'), // Adjusted text
+            SizedBox(width: 8.0),
+            Text('Get Your Posts'),
           ],
         ),
         actions: [
@@ -73,26 +73,26 @@ class PostsScreen extends StatelessWidget {
                     labelStyle: TextStyle(color: Colors.black),
                     contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                      borderRadius: BorderRadius.circular(30.0),
                       borderSide: BorderSide(
-                        color: Colors.transparent, // No border color
+                        color: Colors.transparent,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.0),
-                      borderSide: BorderSide(color: Colors.transparent), // No border color for normal state
+                      borderSide: BorderSide(color: Colors.transparent),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.0),
-                      borderSide: BorderSide(color: Colors.transparent), // No border color when focused
+                      borderSide: BorderSide(color: Colors.transparent),
                     ),
                     suffixIcon: Padding(
-                      padding: const EdgeInsets.only(left: 8.0), // Space between icon and text
-                      child: Icon(Icons.search, color: Colors.black), // Search icon
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Icon(Icons.search, color: Colors.black),
                     ),
                   ),
                   onChanged: (value) {
-                    // Handle search logic here
+
                   },
                 ),
               ),
@@ -107,8 +107,8 @@ class PostsScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Colors.blue.withOpacity(0.4), // Gray color
-                            Colors.grey.withOpacity(0.2), // Blue color
+                            Colors.blue.withOpacity(0.4),
+                            Colors.grey.withOpacity(0.2),
                           ],
                           begin: Alignment.bottomLeft,
                           end: Alignment.bottomRight,
@@ -118,7 +118,7 @@ class PostsScreen extends StatelessWidget {
                           BoxShadow(
                             color: Colors.grey.shade100.withOpacity(0.1),
                             blurRadius: 8,
-                            offset: Offset(0, 5), // changes position of shadow
+                            offset: Offset(0, 5),
                           ),
                         ],
                       ),
@@ -136,47 +136,47 @@ class PostsScreen extends StatelessWidget {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        // Wrap Text in a Container to get the width for the underline
+
                                         Container(
                                           child: Row(
                                             children: [
                                               Icon(Icons.bookmark_outline_outlined, size: 20),
                                               SizedBox(width: 8.0),
-                                              Expanded( // Use Expanded to prevent overflow
+                                              Expanded(
                                                 child: Text(
                                                   post.title,
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
-                                                    overflow: TextOverflow.ellipsis, // Handle overflow
-                                                   // maxLines: 1, // Limit to 1 line
+                                                    overflow: TextOverflow.ellipsis,
+
                                                   ),
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                        SizedBox(height: 4.0), // Space between title and underline
-                                        // Container for the underline
+                                        SizedBox(height: 4.0),
+
                                         Container(
-                                          height:1.0, // Height of the underline
-                                          color: Colors.black, // Color of the underline
+                                          height:1.0,
+                                          color: Colors.black,
                                           width: post.title.length * 8.0,
-                                          alignment: Alignment.centerLeft, // Align to the left
+                                          alignment: Alignment.centerLeft,
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
                                 Container(
-                                  width: 40.0, // Set the width of the container
-                                  height: 40.0, // Set the height of the container
+                                  width: 40.0,
+                                  height: 40.0,
                                   decoration: BoxDecoration(
-                                    color: Colors.white, // Background color of the button
-                                    shape: BoxShape.circle, // Make it circular
-                                    border: Border.all(color: Colors.red, width: 2.0), // Red border
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: Colors.red, width: 2.0),
                                   ),
                                   child: IconButton(
-                                    icon: Icon(Icons.edit, color: Colors.black, size: 22), // Icon color and size
+                                    icon: Icon(Icons.edit, color: Colors.black, size: 22),
                                     onPressed: () async {
                                       final result = await Get.toNamed(AppRoutes.addEditPost, arguments: post);
                                       if (result == true) {
@@ -187,10 +187,10 @@ class PostsScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 5.0), // Spacing between title and body
+                            SizedBox(height: 5.0),
                             GestureDetector(
                                 onTap: () {
-                                  Get.toNamed(AppRoutes.postDetail, arguments: post); // Navigate to post detail
+                                  Get.toNamed(AppRoutes.postDetail, arguments: post);
                                 },
                                 child:
                             Text(post.body)),

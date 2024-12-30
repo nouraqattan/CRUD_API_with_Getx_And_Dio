@@ -1,7 +1,7 @@
-import 'package:fakeapi_withdio_getx/doamin/postsList_Page/postList_Controller.dart';
 import 'package:get/get.dart';
 import '../../../../core/api/repositry.dart';
 import '../../../../model/postModel.dart';
+import '../postsList_Page/postList_Controller.dart';
 
 class PostEditController extends GetxController {
   var isLoading = false.obs;

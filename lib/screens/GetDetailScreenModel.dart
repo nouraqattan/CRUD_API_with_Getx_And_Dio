@@ -1,4 +1,3 @@
-import 'package:fakeapi_withdio_getx/screens/wavebackground.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../model/postModel.dart';
@@ -9,7 +8,7 @@ class WaveBackground extends StatelessWidget {
     return ClipPath(
       clipper: WaveClipper(),
       child: Container(
-        height: 120, // Increase height for better visibility
+        height: 120,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.blue, Colors.blue.withOpacity(0.5)],
@@ -28,12 +27,12 @@ class WaveClipper extends CustomClipper<Path> {
     var path = Path();
     path.lineTo(0, size.height - 60);
     path.quadraticBezierTo(
-      size.width / 4, size.height, // Control point
-      size.width / 2, size.height - 30, // End point
+      size.width / 4, size.height,
+      size.width / 2, size.height - 30,
     );
     path.quadraticBezierTo(
-      size.width * 3 / 4, size.height - 60, // Control point
-      size.width, size.height - 30, // End point
+      size.width * 3 / 4, size.height - 60,
+      size.width, size.height - 30,
     );
     path.lineTo(size.width, 0);
     path.close();
@@ -62,17 +61,17 @@ class PostDetailScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          WaveBackground(), // Add wave background
-          SingleChildScrollView( // Allow scrolling if content overflows
+          WaveBackground(),
+          SingleChildScrollView(
             child: Container(
-              margin: EdgeInsets.only(top: 100), // Push container down
+              margin: EdgeInsets.only(top: 100),
               padding: const EdgeInsets.all(30.0),
               decoration: BoxDecoration(
-                color: Colors.white, // Background color for the container
-                borderRadius: BorderRadius.circular(22), // Circular border radius
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(22),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.blue.withOpacity(0.2), // Shadow color
+                    color: Colors.blue.withOpacity(0.2),
                     blurRadius: 10,
                     offset: Offset(0, 4),
                   ),
@@ -81,10 +80,10 @@ class PostDetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Title with icon and underline
+
                   Row(
                     children: [
-                      Icon(Icons.bookmark, size: 30, color: Colors.blue), // Icon before the title
+                      Icon(Icons.bookmark, size: 30, color: Colors.blue),
                       SizedBox(width: 8),
                       Expanded(
                         child: Column(
@@ -100,8 +99,8 @@ class PostDetailScreen extends StatelessWidget {
                             SizedBox(height: 4),
                             Container(
                               height: 2,
-                              color: Colors.blue, // Underline color
-                              width: double.infinity, // Full width
+                              color: Colors.blue,
+                              width: double.infinity,
                             ),
                           ],
                         ),
@@ -112,7 +111,7 @@ class PostDetailScreen extends StatelessWidget {
                   // Post body
                   Text(
                     post.body,
-                    style: TextStyle(fontSize: 16, height: 1.5), // Improved readability
+                    style: TextStyle(fontSize: 16, height: 1.5),
                   ),
                   SizedBox(height:210),
                   // Row for User ID and ID
@@ -136,9 +135,9 @@ class PostDetailScreen extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1), // Background color
+        color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: color, width: 1.5), // Border for emphasis
+        border: Border.all(color: color, width: 1.5),
       ),
       child: Text(
         text,

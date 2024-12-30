@@ -1,4 +1,4 @@
-import 'package:fakeapi_withdio_getx/doamin/post_edit_Add_Page/postedit_Controller.dart';
+import 'package:fakeapi_withdio_getx/domain/post_edit_Add_Page/postedit_Controller.dart';
 import 'package:get/get.dart';
 
 

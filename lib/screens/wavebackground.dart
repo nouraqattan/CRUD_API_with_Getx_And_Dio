@@ -6,7 +6,7 @@ class WaveBackground extends StatelessWidget {
     return ClipPath(
       clipper: WaveClipper(),
       child: Container(
-        height: 200, // Adjust the height as needed
+        height: 200,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.blue, Colors.blue.withOpacity(0.5)],
@@ -25,12 +25,12 @@ class WaveClipper extends CustomClipper<Path> {
     var path = Path();
     path.lineTo(0, size.height - 60);
     path.quadraticBezierTo(
-      size.width / 4, size.height, // Control point
-      size.width / 2, size.height - 30, // End point
+      size.width / 4, size.height,
+      size.width / 2, size.height - 30,
     );
     path.quadraticBezierTo(
-      size.width * 3 / 4, size.height - 60, // Control point
-      size.width, size.height - 30, // End point
+      size.width * 3 / 4, size.height - 60,
+      size.width, size.height - 30,
     );
     path.lineTo(size.width, 0);
     path.close();
